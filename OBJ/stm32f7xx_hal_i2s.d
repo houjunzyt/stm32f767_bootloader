@@ -68,9 +68,5 @@
 ..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_hal_smartcard_ex.h
 ..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_hal_wwdg.h
 ..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_hal_pcd.h
-..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_ll_usb.h
 ..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_hal_pcd_ex.h
 ..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_hal_hcd.h
-..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_hal_dfsdm.h
-..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_hal_jpeg.h
-..\obj\stm32f7xx_hal_i2s.o: ..\HALLIB\Inc\stm32f7xx_hal_mdios.h

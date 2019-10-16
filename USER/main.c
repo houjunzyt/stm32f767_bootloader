@@ -2,27 +2,42 @@
 #include "delay.h"
 #include "usart.h"
 #include "led.h"
-void Delay(__IO uint32_t nCount);
-void Delay(__IO uint32_t nCount)
-{
-while(nCount--){}
-}
+#include "key.h"
 
 int main(void)
 {
+    int count = 0,times = 0,value = 0;
 	Cache_Enable();                 //打开L1-Cache
 	HAL_Init();                     //初始化HAL库
 	Stm32_Clock_Init(432,25,2,9);   //设置时钟,216Mhz 
+    uart_init(115200);		//初始化串口波特率为115200 
 	delay_init(216);
-	
-	LED_Init();		  		//初始化与LED连接的硬件接口
+    key_init();
+    led_init();
 	while(1)
 	{
-		LED0(0);  //LED0对应引脚GPIOB.5拉低，亮  等同LED0=0;
-		LED1(1);   //LED1对应引脚GPIOE.5拉高， 灭 等同LED1=1;
-		delay_ms(500);  		       
-		LED0(1);	   //LED0对应引脚GPIOB.5拉高，灭  等同LED0=1;
-		LED1(0); //LED1对应引脚GPIOE.5拉低，亮 等同LED1=0;
-		delay_ms(500); 
+        if(count > 10)
+        {
+            count = 0;
+            printf("test\n");
+            if(times % 2)
+            {
+                LED0(1);
+                LED1(0);
+            }
+            else
+            {
+                LED0(0);
+                LED1(1);           
+            }
+            times++ ;
+        }
+        delay_ms(100);
+        count++;
+        value = key_scan(0);
+        if(value)
+        {
+            printf("key %d press\n",value);
+        }
 	}
 }

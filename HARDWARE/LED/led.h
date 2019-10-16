@@ -1,11 +1,16 @@
-#ifndef __LED_H
-#define __LED_H	 
+#ifndef __LED_H_
+#define __LED_H_ 
+
 #include "sys.h"
 
-#define LED0(x) HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,(GPIO_PinState)x)// PB5
-#define LED1(x) HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,(GPIO_PinState)x);// PE5
+//LED端口定义
+#define LED0(n)		(n?HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET):HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET))
+#define LED0_Toggle (HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1))
+#define LED1(n)		(n?HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET):HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET))
+#define LED1_Toggle (HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0))
 
-void LED_Init(void);//初始化
+
+void led_init(void);//初始化
 
 		 				    
 #endif
