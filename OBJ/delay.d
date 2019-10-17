@@ -68,10 +68,6 @@
 ..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_smartcard.h
 ..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_smartcard_ex.h
 ..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_wwdg.h
-..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_pcd.h
-..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_ll_usb.h
-..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_pcd_ex.h
-..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_hcd.h
 ..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_dfsdm.h
 ..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_jpeg.h
 ..\obj\delay.o: ..\HALLIB\Inc\stm32f7xx_hal_mdios.h

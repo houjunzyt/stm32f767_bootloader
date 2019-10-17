@@ -1,19 +1,8 @@
-#ifndef __W25QXX_H
-#define __W25QXX_H
-#include "sys.h"
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK STM32开发板 
-//W25QXX QPI模式驱动代码	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//创建日期:2016/7/18
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2014-2024
-//All rights reserved									  
-////////////////////////////////////////////////////////////////////////////////// 	
+#ifndef __W25QXX_H_
+#define __W25QXX_H_
 
+#include "sys.h"
+	
 //W25X系列/Q系列芯片列表	   
 //W25Q80  ID  0XEF13
 //W25Q16  ID  0XEF14
@@ -28,7 +17,7 @@
 #define W25Q128	0XEF17
 #define W25Q256 0XEF18
 
-extern u16 W25QXX_TYPE;					//定义W25QXX芯片型号		   
+extern uint16_t W25QXX_TYPE;					//定义W25QXX芯片型号		   
  
 ////////////////////////////////////////////////////////////////////////////////// 
 //指令表
@@ -61,16 +50,17 @@ extern u16 W25QXX_TYPE;					//定义W25QXX芯片型号
 void W25QXX_Init(void);					//初始化W25QXX
 void W25QXX_Qspi_Enable(void);			//使能QSPI模式
 void W25QXX_Qspi_Disable(void);			//关闭QSPI模式
-u16  W25QXX_ReadID(void);  	    		//读取FLASH ID
-u8 W25QXX_ReadSR(u8 regno);             //读取状态寄存器 
+uint16_t  W25QXX_ReadID(void);  	    		//读取FLASH ID
+uint8_t W25QXX_ReadSR(uint8_t regno);             //读取状态寄存器 
 void W25QXX_4ByteAddr_Enable(void);     //使能4字节地址模式
-void W25QXX_Write_SR(u8 regno,u8 sr);   //写状态寄存器
+void W25QXX_Write_SR(uint8_t regno,uint8_t sr);   //写状态寄存器
 void W25QXX_Write_Enable(void);  		//写使能 
 void W25QXX_Write_Disable(void);		//写保护
-void W25QXX_Write_NoCheck(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite);//写flash,不校验
-void W25QXX_Read(u8* pBuffer,u32 ReadAddr,u16 NumByteToRead);   //读取flash
-void W25QXX_Write(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite);//写入flash
+void W25QXX_Write_NoCheck(uint8_t* pBuffer,uint32_t WriteAddr,uint16_t NumByteToWrite);//写flash,不校验
+void W25QXX_Read(uint8_t* pBuffer,uint32_t ReadAddr,uint16_t NumByteToRead);   //读取flash
+void W25QXX_Write(uint8_t* pBuffer,uint32_t WriteAddr,uint16_t NumByteToWrite);//写入flash
 void W25QXX_Erase_Chip(void);    	  	//整片擦除
-void W25QXX_Erase_Sector(u32 Dst_Addr);	//扇区擦除
+void W25QXX_Erase_Sector(uint32_t Dst_Addr);	//扇区擦除
 void W25QXX_Wait_Busy(void);           	//等待空闲
+
 #endif

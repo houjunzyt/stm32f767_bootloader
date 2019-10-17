@@ -15,5 +15,6 @@ uint8_t SD_ReadDisk(uint8_t* buf,uint32_t sector,uint8_t cnt);
 uint8_t SD_WriteDisk(uint8_t *buf,uint32_t sector,uint8_t cnt);
 uint8_t SD_ReadBlocks_DMA(uint32_t *buf,uint64_t sector,uint32_t blocksize,uint32_t cnt);
 uint8_t SD_WriteBlocks_DMA(uint32_t *buf,uint64_t sector,uint32_t blocksize,uint32_t cnt);
-
+void show_sdcard_info(void);
+    
 #endif

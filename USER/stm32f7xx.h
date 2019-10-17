@@ -2,16 +2,16 @@
   ******************************************************************************
   * @file    stm32f7xx.h
   * @author  MCD Application Team
-  * @version V1.1.1
-  * @date    01-July-2016
+  * @version V1.1.0
+  * @date    22-April-2016
   * @brief   CMSIS STM32F7xx Device Peripheral Access Layer Header File.           
   *            
   *          The file is the unique include file that the application programmer
   *          is using in the C source code, usually in main.c. This file contains:
   *           - Configuration section that allows to select:
   *              - The STM32F7xx device used in the target application
-  *              - To use or not the peripheralæŠ¯ drivers in application code(i.e. 
-  *                code will be based on direct access to peripheralæŠ¯ registers 
+  *              - To use or not the peripheral’s drivers in application code(i.e. 
+  *                code will be based on direct access to peripheral’s registers 
   *                rather than drivers API), this option is controlled by 
   *                "#define USE_HAL_DRIVER"
   *  
@@ -84,11 +84,11 @@
   /* #define STM32F765xx */   /*!< STM32F765BI, STM32F765BG, STM32F765NI, STM32F765NG, STM32F765II, STM32F765IG,
                                    STM32F765ZI, STM32F765ZG, STM32F765VI, STM32F765VG Devices */
   /* #define STM32F767xx */   /*!< STM32F767BG, STM32F767BI, STM32F767IG, STM32F767II, STM32F767NG, STM32F767NI,
-                                   STM32F767VG, STM32F767VI, STM32F767ZG, STM32F767ZI Devices */
+                                   STM32F767VG, STM32F767VI, STM32F767ZG, STM32F767ZI, STM32F768AI Devices */
   /* #define STM32F769xx */   /*!< STM32F769AG, STM32F769AI, STM32F769BG, STM32F769BI, STM32F769IG, STM32F769II,
-                                   STM32F769NG, STM32F769NI, STM32F768AI Devices */
-  /* #define STM32F777xx */   /*!< STM32F777VI, STM32F777ZI, STM32F777II, STM32F777BI, STM32F777NI Devices */
-  /* #define STM32F779xx */   /*!< STM32F779II, STM32F779BI, STM32F779NI, STM32F779AI, STM32F778AI Devices */
+                                   STM32F769NG, STM32F769NI Devices */
+  /* #define STM32F777xx */   /*!< STM32F777VI, STM32F777ZI, STM32F777II, STM32F777BI, STM32F777NI, STM32F778AI Devices */
+  /* #define STM32F779xx */   /*!< STM32F779II, STM32F779BI, STM32F779NI, STM32F779AI Devices */
 #endif
 
 /*  Tip: To avoid modifying this file each time you need to switch between these
@@ -105,11 +105,11 @@
 #endif /* USE_HAL_DRIVER */
 
 /**
-  * @brief CMSIS Device version number V1.1.1
+  * @brief CMSIS Device version number V1.1.0
   */
 #define __STM32F7_CMSIS_VERSION_MAIN   (0x01) /*!< [31:24] main version */
 #define __STM32F7_CMSIS_VERSION_SUB1   (0x01) /*!< [23:16] sub1 version */
-#define __STM32F7_CMSIS_VERSION_SUB2   (0x01) /*!< [15:8]  sub2 version */
+#define __STM32F7_CMSIS_VERSION_SUB2   (0x00) /*!< [15:8]  sub2 version */
 #define __STM32F7_CMSIS_VERSION_RC     (0x00) /*!< [7:0]  release candidate */ 
 #define __STM32F7_CMSIS_VERSION        ((__STM32F7_CMSIS_VERSION_MAIN << 24)\
                                        |(__STM32F7_CMSIS_VERSION_SUB1 << 16)\

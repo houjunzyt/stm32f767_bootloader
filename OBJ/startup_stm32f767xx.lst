@@ -8,8 +8,8 @@ ARM Macro Assembler    Page 1
                        ics ********************
     2 00000000         ;* File Name          : startup_stm32f767xx.s
     3 00000000         ;* Author             : MCD Application Team
-    4 00000000         ;* Version            : V1.1.1
-    5 00000000         ;* Date               : 01-July-2016
+    4 00000000         ;* Version            : V1.1.0
+    5 00000000         ;* Date               : 22-April-2016
     6 00000000         ;* Description        : STM32F767xx devices vector table
                         for MDK-ARM toolchain. 
     7 00000000         ;*                      This module performs:

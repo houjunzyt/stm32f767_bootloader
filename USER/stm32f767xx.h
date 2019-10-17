@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32f767xx.h
   * @author  MCD Application Team
-  * @version V1.1.1
-  * @date    01-July-2016
+  * @version V1.1.0
+  * @date    22-April-2016
   * @brief   CMSIS Cortex-M7 Device Peripheral Access Layer Header File.
   *
   *          This file contains:
   *           - Data structures and the address mapping for all peripherals
   *           - Peripheral's registers declarations and bits definition
-  *           - Macros to access peripheralæŠ¯ registers hardware
+  *           - Macros to access peripheral’s registers hardware
   *
   ******************************************************************************
   * @attention
