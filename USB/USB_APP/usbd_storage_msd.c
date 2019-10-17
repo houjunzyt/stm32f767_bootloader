@@ -5,7 +5,7 @@
 	   
  
 //最大支持的设备数,3个
-#define STORAGE_LUN_NBR 	3
+#define STORAGE_LUN_NBR  1
 
 ////////////////////////////自己定义的一个标记USB状态的寄存器///////////////////
 //bit0:表示电脑正在向SD卡写入数据
@@ -13,7 +13,7 @@
 //bit2:SD卡写数据错误标志位
 //bit3:SD卡读数据错误标志位
 //bit4:1,表示电脑有轮询操作(表明连接还保持着)
-vu8 USB_STATUS_REG=0;
+uint8_t USB_STATUS_REG=0;
 ////////////////////////////////////////////////////////////////////////////////
  
 
@@ -105,18 +105,15 @@ USBD_STORAGE_cb_TypeDef  *USBD_STORAGE_fops=&USBD_MICRO_SDIO_fops;//指向USBD_MIC
 *****************************************************************/
 int8_t STORAGE_Init (uint8_t lun)
 {
-	u8 res=0;
+	uint8_t res=0;
 	switch(lun)
 	{
-		case 0://SPI FLASH
+		case 0: //SD卡
+		//	res = SD_Init();  //不需要再初始化
+			break;
+		case 1: //SPI FLASH
 			W25QXX_Init();
 			break;
-		case 1://NAND FLASH
-			//res=FTL_Init();
-			break;
-		case 2://SD卡
-			res=SD_Init();
-			break; 
 	} 
 	return res; 
 } 
@@ -133,18 +130,15 @@ int8_t STORAGE_GetCapacity (uint8_t lun, uint32_t *block_num, uint32_t *block_si
 {     
 	switch(lun)
 	{
-		case 0://SPI FLASH
-			*block_size=512;  
-			*block_num=1024*1024*25/512;	//SPI FLASH的前面25M字节,文件系统用
-			break;
-		case 1://NAND FLASH
-		//	*block_size=512;  
-		//	*block_num=nand_dev.valid_blocknum*nand_dev.block_pagenum*nand_dev.page_mainsize/512;
-  			break;
-		case 2://SD卡
+		case 0: //SD卡
 			*block_size=512;  
 			*block_num=SDCardInfo.CardCapacity/512; 
 			break; 
+
+		case 1://SPI FLASH
+			*block_size=512;  
+			*block_num=1024*1024*25/512;	//SPI FLASH的前面25M字节,文件系统用
+			break;
 	}  	
 	return 0; 
 } 
@@ -185,15 +179,12 @@ int8_t STORAGE_Read (uint8_t lun,uint8_t *buf,uint32_t blk_addr,uint16_t blk_len
 	USB_STATUS_REG|=0X02;//标记正在读数据
 	switch(lun)
 	{
-		case 0://SPI FLASH
-			W25QXX_Read(buf,blk_addr*512,blk_len*512);
-			break;
-		case 1://NAND FLASH
-		//	res=FTL_ReadSectors(buf,blk_addr,512,blk_len);
-			break;
-		case 2://SD卡
+		case 0://SD卡
 			res=SD_ReadDisk(buf,blk_addr,blk_len);
 			break; 
+		case 1://SPI FLASH
+			W25QXX_Read(buf,blk_addr*512,blk_len*512);
+			break;
 	} 
 	if(res)
 	{
@@ -217,15 +208,12 @@ int8_t STORAGE_Write (uint8_t lun,uint8_t *buf,uint32_t blk_addr,uint16_t blk_le
 	USB_STATUS_REG|=0X01;//标记正在写数据
 	switch(lun)
 	{
-		case 0://SPI FLASH
-			W25QXX_Write(buf,blk_addr*512,blk_len*512);
-			break;
-		case 1://NAND FLASH
-		//	res=FTL_WriteSectors(buf,blk_addr,512,blk_len);
-			break;
-		case 2://SD卡
+		case 0://SD卡
 			res=SD_WriteDisk(buf,blk_addr,blk_len);
 			break; 
+		case 1://SPI FLASH
+			W25QXX_Write(buf,blk_addr*512,blk_len*512);
+			break;
 	}  
 	if(res)
 	{

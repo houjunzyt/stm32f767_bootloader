@@ -93,3 +93,9 @@
 ..\obj\main.o: ..\USB\STM32_USB_Device_Library\Core\inc\usbd_req.h
 ..\obj\main.o: ..\USB\STM32_USB_Device_Library\Class\msc\inc\usbd_msc_bot.h
 ..\obj\main.o: ..\HARDWARE\W25QXX\w25qxx.h
+..\obj\main.o: ..\FATFS\src\ff.h
+..\obj\main.o: ..\FATFS\src\integer.h
+..\obj\main.o: ..\FATFS\src\ffconf.h
+..\obj\main.o: ..\FATFS\exfuns\exfuns.h
+..\obj\main.o: ..\MALLOC\malloc.h
+..\obj\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h

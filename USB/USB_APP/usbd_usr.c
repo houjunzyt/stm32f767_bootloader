@@ -6,7 +6,7 @@
 //表示USB连接状态
 //0,没有连接;
 //1,已经连接;
-vu8 bDeviceState=0;		//默认没有连接  
+uint8_t bDeviceState=0;		//默认没有连接  
 
 extern USB_OTG_CORE_HANDLE  USB_OTG_dev;
 

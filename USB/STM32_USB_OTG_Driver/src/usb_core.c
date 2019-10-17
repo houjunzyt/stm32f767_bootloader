@@ -334,7 +334,7 @@ USB_OTG_STS USB_OTG_CoreInit(USB_OTG_CORE_HANDLE *pdev)
   USB_OTG_GAHBCFG_TypeDef  ahbcfg;
 #if defined (STM32F446xx) || defined (STM32F469_479xx) || defined (STM32F767xx)	//增加对STM32F767xx的判断
   USB_OTG_DCTL_TypeDef     dctl;
-  u32 tempreg;
+  uint32_t tempreg;
 #endif
   usbcfg.d32 = 0;
   gccfg.d32 = 0;
