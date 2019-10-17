@@ -80,3 +80,5 @@
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
 ..\obj\main.o: ..\HARDWARE\LED\led.h
 ..\obj\main.o: ..\HARDWARE\KEY\key.h
+..\obj\main.o: ..\HARDWARE\SDRAM\sdram.h
+..\obj\main.o: ..\HARDWARE\SDMMC\sdmmc_sdcard.h
