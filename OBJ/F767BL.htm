@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\OBJ\F767BL.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\F767BL.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Oct 17 14:26:21 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Oct 20 21:12:10 2019
 <BR><P>
-<H3>Maximum Stack Usage =       1504 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       1464 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; boot_app &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; W25QXX_Write &rArr; W25QXX_Write_NoCheck &rArr; W25QXX_Write_Page &rArr; W25QXX_Wait_Busy &rArr; W25QXX_ReadSR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
 <P>
@@ -218,7 +218,9 @@ Global Symbols
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadDisk
 </UL>
 
-<P><STRONG><a name="[1d6]"></a>MSR_MSP</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, sys.o(.emb_text), UNUSED)
+<P><STRONG><a name="[183]"></a>MSR_MSP</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, sys.o(.emb_text))
+<BR><BR>[Called By]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;boot_app
+</UL>
 
 <P><STRONG><a name="[26]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f767xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f767xx.o(RESET)
@@ -561,16 +563,16 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_WriteBlocks
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_ReadBlocks
+<BR>[Called By]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_ProcessWrite
+<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_ProcessRead
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_ioctl
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_write
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
 <LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
 <LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clmt_clust
 <LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STORAGE_GetCapacity
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_ProcessWrite
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_ProcessRead
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_WriteBlocks
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_ReadBlocks
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
@@ -579,25 +581,21 @@ Global Symbols
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadDisk
 </UL>
 
-<P><STRONG><a name="[1d7]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[1d6]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[1d8]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
-
-<P><STRONG><a name="[181]"></a>strcpy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, strcpy.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;boot_app
-</UL>
+<P><STRONG><a name="[1d7]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[a4]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[1d9]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[1d8]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[a3]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[1da]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[1d9]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[a1]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
@@ -605,11 +603,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[1db]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[1da]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[1dc]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[1db]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[1dd]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[1dc]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
 <P><STRONG><a name="[2a]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f7xx_it.o(i.BusFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f767xx.o(RESET)
@@ -759,13 +757,13 @@ Global Symbols
 <P><STRONG><a name="[e1]"></a>HAL_GPIO_Init</STRONG> (Thumb, 484 bytes, Stack size 24 bytes, stm32f7xx_hal_gpio.o(i.HAL_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = HAL_GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_MspInit
+<BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_MspInit
+<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_Init
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_MspInit
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SDRAM_MspInit
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
 <LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_MspInit
-<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_Init
 </UL>
 
 <P><STRONG><a name="[1c4]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f7xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
@@ -865,9 +863,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = HAL_QSPI_Init &rArr; HAL_QSPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_MspInit
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_SetTimeout
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WaitFlagStateUntilTimeout
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_MspInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Init
 </UL>
@@ -1384,16 +1382,16 @@ Global Symbols
 <P><STRONG><a name="[d]"></a>STORAGE_Read</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, usbd_storage_msd.o(i.STORAGE_Read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = STORAGE_Read &rArr; SD_ReadDisk &rArr; HAL_SD_ReadBlocks &rArr; HAL_SD_StopTransfer &rArr; SD_CmdResp1Error &rArr; SDMMC_GetResponse
 </UL>
-<BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadDisk
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Read
+<BR>[Calls]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Read
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadDisk
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usbd_storage_msd.o(.data)
 </UL>
 <P><STRONG><a name="[e]"></a>STORAGE_Write</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, usbd_storage_msd.o(i.STORAGE_Write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = STORAGE_Write &rArr; W25QXX_Write &rArr; W25QXX_Write_NoCheck &rArr; W25QXX_Write_Page &rArr; W25QXX_Wait_Busy &rArr; W25QXX_ReadSR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteDisk
-<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Write
+<BR>[Calls]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Write
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteDisk
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usbd_storage_msd.o(.data)
 </UL>
@@ -1549,10 +1547,10 @@ Global Symbols
 <P><STRONG><a name="[14f]"></a>USBD_Init</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, usbd_core.o(i.USBD_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = USBD_Init &rArr; DCD_Init &rArr; USB_OTG_CoreInitDev &rArr; USB_OTG_FlushTxFifo &rArr; USB_OTG_BSP_uDelay &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_Init
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_EnableInterrupt
-<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_DeInit
+<BR>[Calls]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_DeInit
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DCD_Init
+<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_Init
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_EnableInterrupt
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_firmware
 </UL>
@@ -1788,9 +1786,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_CoreReset
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_FlushTxFifo
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_FlushTxFifo
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_FlushRxFifo
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_CoreReset
 </UL>
 
 <P><STRONG><a name="[c9]"></a>USB_OTG_CoreInit</STRONG> (Thumb, 350 bytes, Stack size 32 bytes, usb_core.o(i.USB_OTG_CoreInit))
@@ -2110,42 +2108,43 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[1de]"></a>__1printf$5</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
+<P><STRONG><a name="[1dd]"></a>__1printf$5</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
 
 <P><STRONG><a name="[165]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
-<LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_USR_DeviceSuspended
+<BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_USR_DeviceSuspended
 <LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_USR_DeviceResumed
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_USR_DeviceReset
 <LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_USR_DeviceDisconnected
 <LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_USR_DeviceConnected
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_USR_DeviceConfigured
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_firmware
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;boot_app
 </UL>
 
-<P><STRONG><a name="[1df]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[1de]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[1e0]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[1df]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[1e1]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[1e0]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[17a]"></a>boot_app</STRONG> (Thumb, 156 bytes, Stack size 656 bytes, main.o(i.boot_app))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1504<LI>Call Chain = boot_app &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; W25QXX_Write &rArr; W25QXX_Write_NoCheck &rArr; W25QXX_Write_Page &rArr; W25QXX_Wait_Busy &rArr; W25QXX_ReadSR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
+<P><STRONG><a name="[17a]"></a>boot_app</STRONG> (Thumb, 226 bytes, Stack size 616 bytes, main.o(i.boot_app))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1464<LI>Call Chain = boot_app &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; W25QXX_Write &rArr; W25QXX_Write_NoCheck &rArr; W25QXX_Write_Page &rArr; W25QXX_Wait_Busy &rArr; W25QXX_ReadSR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_write
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
-<LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
+<LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
+<LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSR_MSP
 <LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exfuns_init
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exf_getfree
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -2163,25 +2162,26 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_scan
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_mDelay
+<BR>[Called By]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_mDelay
+<LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_scan
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_firmware
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;boot_app
 </UL>
 
 <P><STRONG><a name="[12b]"></a>delay_us</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, delay.o(i.delay_us))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDRAM_Initialization_Sequence
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_uDelay
+<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDRAM_Initialization_Sequence
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
-<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_OTG_BSP_uDelay
 </UL>
 
 <P><STRONG><a name="[1ac]"></a>disk_initialize</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, diskio.o(i.disk_initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = disk_initialize &rArr; W25QXX_Init &rArr; W25QXX_Qspi_Enable &rArr; W25QXX_Write_SR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
-<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Init
+<BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Init
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
@@ -2197,9 +2197,9 @@ Global Symbols
 <P><STRONG><a name="[1ae]"></a>disk_read</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, diskio.o(i.disk_read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = disk_read &rArr; SD_ReadDisk &rArr; HAL_SD_ReadBlocks &rArr; HAL_SD_StopTransfer &rArr; SD_CmdResp1Error &rArr; SDMMC_GetResponse
 </UL>
-<BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadDisk
+<BR>[Calls]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Read
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadDisk
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_write
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
@@ -2214,9 +2214,9 @@ Global Symbols
 <P><STRONG><a name="[1af]"></a>disk_write</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, diskio.o(i.disk_write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = disk_write &rArr; W25QXX_Write &rArr; W25QXX_Write_NoCheck &rArr; W25QXX_Write_Page &rArr; W25QXX_Wait_Busy &rArr; W25QXX_ReadSR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteDisk
+<BR>[Calls]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Write
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteDisk
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
-<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25QXX_Write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_write
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
@@ -2241,7 +2241,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;boot_app
 </UL>
 
-<P><STRONG><a name="[183]"></a>f_close</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, ff.o(i.f_close))
+<P><STRONG><a name="[181]"></a>f_close</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, ff.o(i.f_close))
 <BR><BR>[Stack]<UL><LI>Max Depth = 632<LI>Call Chain = f_close &rArr; f_sync &rArr; load_obj_dir &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; W25QXX_Write &rArr; W25QXX_Write_NoCheck &rArr; W25QXX_Write_Page &rArr; W25QXX_Wait_Busy &rArr; W25QXX_ReadSR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
@@ -2326,7 +2326,7 @@ Global Symbols
 <LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;load_obj_dir
 <LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_fat_chain
 </UL>
-<BR>[Called By]<UL><LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
+<BR>[Called By]<UL><LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
 </UL>
 
 <P><STRONG><a name="[182]"></a>f_write</STRONG> (Thumb, 658 bytes, Stack size 80 bytes, ff.o(i.f_write))
@@ -2411,10 +2411,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9c]"></a>main</STRONG> (Thumb, 166 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1504<LI>Call Chain = main &rArr; boot_app &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; W25QXX_Write &rArr; W25QXX_Write_NoCheck &rArr; W25QXX_Write_Page &rArr; W25QXX_Wait_Busy &rArr; W25QXX_ReadSR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
+<P><STRONG><a name="[9c]"></a>main</STRONG> (Thumb, 160 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1464<LI>Call Chain = main &rArr; boot_app &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; W25QXX_Write &rArr; W25QXX_Write_NoCheck &rArr; W25QXX_Write_Page &rArr; W25QXX_Wait_Busy &rArr; W25QXX_ReadSR &rArr; QSPI_Send_CMD &rArr; HAL_QSPI_Command &rArr; QSPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
+<LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_mem_init
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Stm32_Clock_Init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cache_Enable
+<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sdram_init
@@ -2422,11 +2427,6 @@ Global Symbols
 <LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_scan
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
 <LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
-<LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_mem_init
-<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Stm32_Clock_Init
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cache_Enable
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_firmware
 <LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;boot_app
@@ -2482,7 +2482,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_mem_init
 </UL>
 
-<P><STRONG><a name="[1c9]"></a>sdram_init</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, sdram.o(i.sdram_init))
+<P><STRONG><a name="[1c9]"></a>sdram_init</STRONG> (Thumb, 118 bytes, Stack size 32 bytes, sdram.o(i.sdram_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = sdram_init &rArr; SDRAM_Initialization_Sequence &rArr; sdram_send_cmd &rArr; HAL_SDRAM_SendCommand &rArr; FMC_SDRAM_SendCommand
 </UL>
 <BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDRAM_Initialization_Sequence
@@ -2520,8 +2520,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_Init
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -3184,7 +3184,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_write
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
-<LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
+<LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
 </UL>
 
 <P><STRONG><a name="[1c7]"></a>xdir_sum</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, ff.o(i.xdir_sum))

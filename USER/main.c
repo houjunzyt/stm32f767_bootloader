@@ -18,6 +18,8 @@
 
 #define BOOT_WAIT_TIME 5
 
+typedef  void (*iapfun)(void);				//定义一个函数类型的参数.
+
 USB_OTG_CORE_HANDLE USB_OTG_dev;
 extern uint8_t USB_STATUS_REG;		//USB状态
 extern uint8_t bDeviceState;		//USB连接 情况
@@ -79,33 +81,55 @@ void update_firmware(void) //升级固件函数
 	}
 }
 
+iapfun Jump_To_Application;
+#define SDRAM_ADDR_SWP    ((uint32_t)(0X60000000)) //SDRAM开始地址
 void boot_app(void)
 {
     uint32_t total,free;
+    volatile uint32_t JumpAddress;
     FRESULT res;
     FIL fsrc;
     exfuns_init();							//为fatfs相关变量申请内存
     f_mount(fs[0],"0:",1); 					//挂载SD卡 
     while(exf_getfree((uint8_t *)"0:",&total,&free))	//得到SD卡的总容量和剩余容量
-	{
-		printf("SD Card Fatfs Error!\n");
-		LED0_Toggle;//DS0闪烁
-	}
-    printf("SD total:%d MB,free:%d MB\n",total,free);
-    res = f_open(&fsrc, "0:readme.txt",FA_READ|FA_WRITE);
-    if(res == FR_OK)
     {
+        printf("SD Card Fatfs Error!\n");
+        LED0_Toggle;//DS0闪烁
+    }
+    SYSCFG->MEMRMP |= (1<<10);            
+    delay_ms(5000);
+    LED0_Toggle;//DS0闪烁
+    printf("SD total:%d MB,free:%d MB\n",total,free);
+    
+    uint8_t * SDRAM_ADDR = NULL;
+    SDRAM_ADDR = (uint8_t *)SDRAM_ADDR_SWP;//Bank5_SDRAM_ADDR;
+    res = f_open(&fsrc, "0:app.bin",FA_READ);
+    if(res == FR_OK)
+    {      
+
         uint8_t buff[50];
         UINT count=0;
         int size;
-        printf("file exsit\n");
-        res = f_read(&fsrc,buff, sizeof(buff), &count);
-        printf("read:%s,%d\n",buff,count);
-        strcpy((char *)buff,"houjun");
-        res = f_write(&fsrc, buff, 6, &count);
         size = f_size(&fsrc);
-        printf("write:%d,%d,size:%d\n",count,res,size);
+        printf("file exsit,size:%d Byte\n",size);
+        res = f_read(&fsrc,SDRAM_ADDR, size, &count);
+        printf("read %d byte\n",count);
         f_close(&fsrc);
+        res = f_open(&fsrc, "0:read.bin",FA_WRITE | FA_OPEN_ALWAYS);
+        res = f_write(&fsrc,(uint8_t *)(SDRAM_ADDR), size, &count);
+        f_close(&fsrc);
+        if(count == size)
+        {
+            printf("in\n");
+         //   __disable_irq();
+         //   __asm("SVC 0x0");   //这条指令很重要，引发一个svc中断，在里面切换cpu工作模式，从用户模式切换为特权模式，否则app跳转必死无疑
+            __asm("CPSID   I"); 
+            printf("remap sdram\n");
+            JumpAddress = *(uint32_t *)(SDRAM_ADDR_SWP+4);
+            Jump_To_Application = (iapfun) JumpAddress;
+            MSR_MSP(*(uint32_t*) SDRAM_ADDR_SWP);
+            Jump_To_Application();  
+        }  
     }
     while(1)
     {
@@ -125,7 +149,7 @@ int main(void)
     led_init();
     sdram_init();
     my_mem_init(SRAMIN);		    //初始化内部内存池
-	my_mem_init(SRAMEX);		    //初始化外部内存池
+//	my_mem_init(SRAMEX);		    //初始化外部内存池
 	my_mem_init(SRAMDTCM);		    //初始化CCM内存池 
     if(SD_Init())
     {

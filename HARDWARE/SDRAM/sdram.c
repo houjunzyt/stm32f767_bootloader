@@ -24,17 +24,20 @@ void sdram_init(void)
     SDRAM_Handler.Init.ReadBurst=FMC_SDRAM_RBURST_ENABLE;                //使能突发
     SDRAM_Handler.Init.ReadPipeDelay=FMC_SDRAM_RPIPE_DELAY_0;            //读通道延时
     
-    SDRAM_Timing.LoadToActiveDelay=1;                                   //加载模式寄存器到激活时间的延迟为1个时钟周期
-    SDRAM_Timing.ExitSelfRefreshDelay=7;                                //退出自刷新延迟为7个时钟周期
+    SDRAM_Timing.LoadToActiveDelay=2;                                   //加载模式寄存器到激活时间的延迟为1个时钟周期
+    SDRAM_Timing.ExitSelfRefreshDelay=8;                                //退出自刷新延迟为7个时钟周期
     SDRAM_Timing.SelfRefreshTime=6;                                     //自刷新时间为6个时钟周期                                 
     SDRAM_Timing.RowCycleDelay=6;                                       //行循环延迟为6个时钟周期
-    SDRAM_Timing.WriteRecoveryTime=1;                                   //恢复延迟为1个时钟周期
-    SDRAM_Timing.RPDelay=1;                                             //行预充电延迟为1个时钟周期
-    SDRAM_Timing.RCDDelay=1;                                            //行到列延迟为1个时钟周期
+    SDRAM_Timing.WriteRecoveryTime=2;                                   //恢复延迟为1个时钟周期
+    SDRAM_Timing.RPDelay=2;                                             //行预充电延迟为1个时钟周期
+    SDRAM_Timing.RCDDelay=2;                                            //行到列延迟为1个时钟周期
     HAL_SDRAM_Init(&SDRAM_Handler,&SDRAM_Timing);  
 	
 	SDRAM_Initialization_Sequence(&SDRAM_Handler);//发送SDRAM初始化序列
-   
+   	for (int i = 0; i < 8*1024*1024; i++)
+	{
+		*(__IO uint32_t*) (Bank5_SDRAM_ADDR + 4*i) = 0x00000000;	
+	}
 }
 
 /*****************************************************************
