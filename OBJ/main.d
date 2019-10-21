@@ -3,7 +3,7 @@
 ..\obj\main.o: ..\USER\stm32f7xx.h
 ..\obj\main.o: ..\USER\stm32f767xx.h
 ..\obj\main.o: ..\CORE\core_cm7.h
-..\obj\main.o: D:\KEIL\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\main.o: ..\CORE\core_cmInstr.h
 ..\obj\main.o: ..\CORE\cmsis_armcc.h
 ..\obj\main.o: ..\CORE\core_cmFunc.h
@@ -14,7 +14,7 @@
 ..\obj\main.o: ..\HALLIB\Inc\stm32f7xx_hal_def.h
 ..\obj\main.o: ..\USER\stm32f7xx.h
 ..\obj\main.o: ..\HALLIB\Inc\Legacy/stm32_hal_legacy.h
-..\obj\main.o: D:\KEIL\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\HALLIB\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\main.o: ..\HALLIB\Inc\stm32f7xx_hal_gpio.h
 ..\obj\main.o: ..\HALLIB\Inc\stm32f7xx_hal_gpio_ex.h
@@ -98,4 +98,4 @@
 ..\obj\main.o: ..\FATFS\src\ffconf.h
 ..\obj\main.o: ..\FATFS\exfuns\exfuns.h
 ..\obj\main.o: ..\MALLOC\malloc.h
-..\obj\main.o: D:\KEIL\ARM\ARMCC\Bin\..\include\string.h
+..\obj\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h

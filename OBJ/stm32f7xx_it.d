@@ -7,7 +7,7 @@
 ..\obj\stm32f7xx_it.o: ..\USER\stm32f7xx.h
 ..\obj\stm32f7xx_it.o: ..\USER\stm32f767xx.h
 ..\obj\stm32f7xx_it.o: ..\CORE\core_cm7.h
-..\obj\stm32f7xx_it.o: D:\KEIL\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\stm32f7xx_it.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\stm32f7xx_it.o: ..\CORE\core_cmInstr.h
 ..\obj\stm32f7xx_it.o: ..\CORE\cmsis_armcc.h
 ..\obj\stm32f7xx_it.o: ..\CORE\core_cmFunc.h
@@ -15,7 +15,7 @@
 ..\obj\stm32f7xx_it.o: ..\USER\system_stm32f7xx.h
 ..\obj\stm32f7xx_it.o: ..\USER\stm32f7xx_hal_conf.h
 ..\obj\stm32f7xx_it.o: ..\HALLIB\Inc\Legacy/stm32_hal_legacy.h
-..\obj\stm32f7xx_it.o: D:\KEIL\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\stm32f7xx_it.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\stm32f7xx_it.o: ..\HALLIB\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\stm32f7xx_it.o: ..\HALLIB\Inc\stm32f7xx_hal_gpio.h
 ..\obj\stm32f7xx_it.o: ..\HALLIB\Inc\stm32f7xx_hal_gpio_ex.h

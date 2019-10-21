@@ -24,6 +24,8 @@ USB_OTG_CORE_HANDLE USB_OTG_dev;
 extern uint8_t USB_STATUS_REG;		//USB状态
 extern uint8_t bDeviceState;		//USB连接 情况
 uint8_t usb_buff[MSC_MEDIA_PACKET];
+iapfun Jump_To_Application;
+#define SDRAM_ADDR_SWP    ((uint32_t)(0X60000000)) //SDRAM开始地址
 
 void update_firmware(void) //升级固件函数
 {
@@ -81,8 +83,6 @@ void update_firmware(void) //升级固件函数
 	}
 }
 
-iapfun Jump_To_Application;
-#define SDRAM_ADDR_SWP    ((uint32_t)(0X60000000)) //SDRAM开始地址
 void boot_app(void)
 {
     uint32_t total,free;
@@ -96,38 +96,28 @@ void boot_app(void)
         printf("SD Card Fatfs Error!\n");
         LED0_Toggle;//DS0闪烁
     }
-    SYSCFG->MEMRMP |= (1<<10);            
-    delay_ms(5000);
-    LED0_Toggle;//DS0闪烁
+    SYSCFG->MEMRMP |= (1<<10);  // 将sdram remap到0x60000000位置才可以使得cpu去执行           
+    delay_ms(1000);// 适当延时使得映射完毕
     printf("SD total:%d MB,free:%d MB\n",total,free);
-    
     uint8_t * SDRAM_ADDR = NULL;
     SDRAM_ADDR = (uint8_t *)SDRAM_ADDR_SWP;//Bank5_SDRAM_ADDR;
     res = f_open(&fsrc, "0:app.bin",FA_READ);
     if(res == FR_OK)
     {      
-
         uint8_t buff[50];
         UINT count=0;
         int size;
         size = f_size(&fsrc);
         printf("file exsit,size:%d Byte\n",size);
-        res = f_read(&fsrc,SDRAM_ADDR, size, &count);
+        res = f_read(&fsrc,SDRAM_ADDR, size, &count); // 将代码读到sdram
         printf("read %d byte\n",count);
-        f_close(&fsrc);
-        res = f_open(&fsrc, "0:read.bin",FA_WRITE | FA_OPEN_ALWAYS);
-        res = f_write(&fsrc,(uint8_t *)(SDRAM_ADDR), size, &count);
         f_close(&fsrc);
         if(count == size)
         {
-            printf("in\n");
-         //   __disable_irq();
-         //   __asm("SVC 0x0");   //这条指令很重要，引发一个svc中断，在里面切换cpu工作模式，从用户模式切换为特权模式，否则app跳转必死无疑
-            __asm("CPSID   I"); 
-            printf("remap sdram\n");
-            JumpAddress = *(uint32_t *)(SDRAM_ADDR_SWP+4);
-            Jump_To_Application = (iapfun) JumpAddress;
-            MSR_MSP(*(uint32_t*) SDRAM_ADDR_SWP);
+            __asm("CPSID   I");  // 关闭中断
+            JumpAddress = *(uint32_t *)(SDRAM_ADDR_SWP+4); //app的入口地址
+            Jump_To_Application = (iapfun) JumpAddress; //强制转化为指针
+            MSR_MSP(*(uint32_t*) SDRAM_ADDR_SWP); //MSP赋值 main_SP
             Jump_To_Application();  
         }  
     }
